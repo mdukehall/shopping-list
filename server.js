@@ -36,6 +36,7 @@ app.put('/items/:id', jsonParser, function(req, res) {
 app.delete('/items/:id', function (req, res) {
   console.log(req.params.id);
   storage.delete(req.params.id);
+  res.status(201).json("success");
 });
 
 
@@ -44,3 +45,6 @@ var server = http.createServer(app);
 server.listen(app.get('port'), function(){
     console.log("Web server listening on port " + app.get('port'));
 });
+
+exports.app = app;
+exports.storage = storage;
